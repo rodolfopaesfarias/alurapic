@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'alurapic';
+  url = 'https://a.espncdn.com/i/teamlogos/soccer/500/819.png';
+  alt = 'Flamengo';
 }
