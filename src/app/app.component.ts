@@ -6,7 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'alurapic';
-  url = 'https://a.espncdn.com/i/teamlogos/soccer/500/819.png';
-  alt = 'Flamengo';
+
+  photos = [
+    {url: 'https://img.elo7.com.br/product/original/1A24C05/passaro-calopsita-em-resina-passaros-para-decorar.jpg',
+     description: 'Calopsita'},
+    {url: 'https://i.ytimg.com/vi/dASPUwsqbuA/hqdefault.jpg',
+     description: 'Papagaio'}     
+  ]
+
 }
