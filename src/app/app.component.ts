@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  photos = [
-    {url: 'https://img.elo7.com.br/product/original/1A24C05/passaro-calopsita-em-resina-passaros-para-decorar.jpg',
-     description: 'Calopsita'},
-    {url: 'https://i.ytimg.com/vi/dASPUwsqbuA/hqdefault.jpg',
-     description: 'Papagaio'}     
-  ]
+  photos: Object[] = [];
+
+  constructor (http: HttpClient) {
+    
+  http.get<Object[]>('http://localhost:3000/flavio/photos')
+      .subscribe(photos => this.photos = photos);
+  }
 
 }
