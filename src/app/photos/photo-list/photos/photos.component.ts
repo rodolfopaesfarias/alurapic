@@ -1,6 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Photo } from '../../photo/photo';
-import { NullViewportScroller } from '@angular/common/src/viewport_scroller';
 
 @Component({
   selector: 'ap-photos',
@@ -16,8 +15,8 @@ export class PhotosComponent implements OnChanges {
 
   constructor() { }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.photos) this.rows = this.groupedColumns(this.photos);
+  ngOnChanges(changes: SimpleChanges): void {    
+    if (changes.photos) this.rows = this.groupedColumns(this.photos);    
   }
 
   private groupedColumns(photos: Photo[]): any[] {
@@ -27,6 +26,7 @@ export class PhotosComponent implements OnChanges {
       newRows.push(photos.slice(index,index+3))      
     }
 
+    console.log(newRows);
     return newRows;
   }
   
