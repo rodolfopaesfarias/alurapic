@@ -1,11 +1,11 @@
 <h4 class="text-center">Login</h4>
 
-<form [formGroup]="loginForm" class="form mt-4">
+<form [formGroup]="loginForm" class="form mt-4" (submit)="login()">
 
     <div class="form-group">
-        <input formControlName="userName" class="form-control" placeholder="user name" autofocus>
+        <input formControlName="username" class="form-control" placeholder="username" autofocus>
         <ap-v-message 
-            *ngIf="loginForm.get('userName').errors?.required" 
+            *ngIf="loginForm.get('username').errors?.required" 
             text="User name is required!">
         </ap-v-message>        
     </div>
