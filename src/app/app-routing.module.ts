@@ -5,11 +5,19 @@ import { PhotoFormComponent } from './photos/photo-form/photo-form.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { PhotoListResolver } from './photos/photo-list/photo-list.resolver';
 import { SignInComponent } from './home/sign-in/sign-in.component';
+import { AuthGuard } from './core/auth/auth.guard';
+import { SignUpComponent } from './home/sign-up/sign-up.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: SignInComponent
+    component: SignInComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'signup',
+    component: SignUpComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'user/:userName',
