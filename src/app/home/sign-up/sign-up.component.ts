@@ -7,6 +7,7 @@ import { UserNotTakenValidatorService } from './user-not-taken.validator.service
 import { NewUser } from './new-user';
 import { SignUpService } from './sign-up.service';
 import { PlatformDetectorService } from 'src/app/core/platform-detector/platform-detector.service';
+import { UserNamePasswordValidator } from './UserNamePasswordValidor';
 
 @Component({
     templateUrl: './sign-up.component.html',
@@ -55,17 +56,21 @@ export class SignUpComponent implements OnInit {
                     Validators.maxLength(14)
                 ]
             ]
+        }, {
+            validators: UserNamePasswordValidator
         });
         this.platformDetectorService.isPlatformBrowser() &&
         this.emailInput.nativeElement.focus();
     }
 
     signUp() {
-        const newUser = this.signupForm.getRawValue() as NewUser;
-        this.signUpService.signup(newUser).subscribe(
-            () => this.router.navigate(['']),
-            err => console.log(err)
-        );
+        if (this.signupForm.valid && !this.signupForm.pending) {
+            const newUser = this.signupForm.getRawValue() as NewUser;
+            this.signUpService.signup(newUser).subscribe(
+                () => this.router.navigate(['']),
+                err => console.log(err)
+            );            
+        }
     }
 
 }
